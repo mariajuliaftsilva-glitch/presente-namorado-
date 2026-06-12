@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pra você, meu amor</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Georgia', serif;overflow:hidden}
+.tela-entrada{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#fff5f7 0%,#ffe3ec 50%,#fff5f7 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;z-index:9999;transition:0.8s}
+.tela-entrada h1{color:#d63384;font-size:30px;margin-bottom:15px;font-weight:300}
+.tela-entrada p{color:#666;font-size:18px;margin-bottom:40px}
+.btn-presente{background:#d63384;color:white;border:none;padding:18px 45px;font-size:22px;border-radius:50px;cursor:pointer;font-family:'Georgia',serif;box-shadow:0 8px 25px rgba(214,51,132,0.3);transition:0.3s}
+.btn-presente:hover{transform:scale(1.05)}
+.conteudo{display:none;opacity:0;transition:opacity 1s;background:linear-gradient(135deg,#fff5f7 0%,#ffe3ec 50%,#fff5f7 100%);color:#333;text-align:center;padding:40px 20px;min-height:100vh}
+.conteudo.ativo{display:block;opacity:1}
+h2{color:#d63384;font-size:42px;margin-bottom:10px;font-weight:300;letter-spacing:2px}
+.sobre{color:#555;font-size:20px;margin-bottom:15px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+.contador{color:#d63384;font-size:24px;font-weight:bold;margin-bottom:50px;letter-spacing:1px}
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.galeria img{width:100%;height:280px;object-fit:cover;border-radius:20px;box-shadow:0 8px 20px rgba(214,51,132,0.15);transition:0.4s}
+.galeria img:hover{transform:translateY(-8px)}
+.carta{background:rgba(255,255,255,0.9);padding:50px;border-radius:25px;max-width:650px;margin:60px auto;font-size:20px;line-height:1.9;box-shadow:0 10px 30px rgba(214,51,132,0.1)}
+.assinatura{color:#d63384;font-size:22px;margin-top:25px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="tela-entrada" id="entrada">
+<h1>Pra você, meu amor</h1>
+<p>Maju separou um presente especial</p>
+<button class="btn-presente" onclick="abrirPresente()">Ver presente ❤️</button>
+</div>
+<div class="conteudo" id="conteudo">
+<h2>Gabriel & Maju</h2>
+<p class="sobre">Nossa jornada, primeiro beijo e tudo mais</p>
+<p class="contador" id="contador">Calculando nosso tempo juntos...</p>
+<div class="galeria">
+<img src="foto1.jpg" alt="Nós"><img src="foto2.jpg" alt="Nós"><img src="foto3.jpg" alt="Nós"><img src="foto4.jpg" alt="Nós"><img src="foto5.jpg" alt="Nós"><img src="foto6.jpg" alt="Nós"><img src="foto7.jpg" alt="Nós"><img src="foto8.jpg" alt="Nós"><img src="foto9.jpg" alt="Nós"><img src="foto10.jpg" alt="Nós"><img src="foto11.jpg" alt="Nós"><img src="foto12.jpg" alt="Nós"><img src="foto13.jpg" alt="Nós"><img src="foto14.jpg" alt="Nós"><img src="foto15.jpg" alt="Nós"><img src="foto16.jpg" alt="Nós"><img src="foto17.jpg" alt="Nós"><img src="foto18.jpg" alt="Nós"><img src="foto19.jpg" alt="Nós">
+</div>
+<div class="carta">
+<p>Eu te escolho todo dia, Gabriel.</p>
+<p>19 fotos aqui, mas cada uma é um pedaço do meu coração.</p>
+<p>Do espelho de manhã ao Maracanã à noite, da pedra ao abraço...<br>Tu é meu lar, meu abraço, meu amor.</p>
+<p>Obrigada por me fazer tão feliz.</p>
+<p class="assinatura">Pra sempre tua, Maju ❤️</p>
+</div>
+<audio id="musica" loop><source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg"></audio>
+</div>
+<script>
+function abrirPresente(){document.getElementById('entrada').style.opacity='0';setTimeout(()=>{document.getElementById('entrada').style.display='none';document.getElementById('conteudo').classList.add('ativo');document.getElementById('musica').play();},800);}
+function atualizarContador(){
+const inicio=new Date('2025-09-01');
+const agora=new Date();
+let diff=agora-inicio;
+const dias=Math.floor(diff/86400000);
+diff-=dias*86400000;
+const horas=Math.floor(diff/3600000);
+diff-=horas*3600000;
+const min=Math.floor(diff/60000);
+diff-=min*60000;
+const seg=Math.floor(diff/1000);
+const horasTotais=Math.floor((agora-inicio)/3600000);
+document.getElementById('contador').innerHTML=`Juntos há ${dias} dias, ${horas} horas, ${min} minutos e ${seg} segundos<br><span style="font-size:18px;color:#555;margin-top:8px;display:block;">Isso são ${horasTotais} horas de amor ❤️</span>`;
+setTimeout(atualizarContador,1000);
+}
+atualizarContador();
+</script>
+</body>
+</html>  
